@@ -23,4 +23,4 @@ RUN sed -i -- 's/<Context>/<Context reloadable="true">/g' /var/lib/tomcat7/conf/
 RUN echo "<?xml version='1.0' encoding='utf-8'?><tomcat-users><role rolename=\"manager-gui\"/><role rolename=\"manager-script\"/><user username=\"admin\" password=\pwd\" roles=\"manager-gui,manager-script\"/></tomcat-users>" >$CATALINA_BASE/conf/tomcat-users.xml
 #
 EXPOSE 8080
-CMD ["/usr/share/tomcat7/bin/catalina.sh", "run"]
+CMD ["/usr/share/tomcat7/bin/startup.sh"]
