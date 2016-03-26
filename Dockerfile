@@ -1,12 +1,11 @@
 #dockerfile/emooti/tutorial1tomcat7
+# Setup Tomcat7 Server 
 FROM ubuntu:14.04
 MAINTAINER Uta Kapp "utakapp@gmail.com"
 RUN apt-get update
 RUN apt-get -y install curl vim git maven
 RUN apt-get -y install openjdk-7-jre
-#RUN apt-get -y install openjdk-7-jre openjdk-7-jdk
-#RUN apt-get -y install tzdata tzdata-java tomcat7
-# apt-get install tomcat7-docs tomcat7-admin tomcat7-examples
+
 RUN apt-get -y install tomcat7 tomcat7-admin
 RUN apt-get update
 ENV CATALINA_HOME /usr/share/tomcat7
@@ -27,5 +26,6 @@ RUN sed -i -- 's/<Context>/<Context reloadable="true">/g' /var/lib/tomcat7/conf/
 RUN echo "<?xml version='1.0' encoding='utf-8'?><tomcat-users><role rolename=\"manager-gui\"/><role rolename=\"manager-script\"/><user username=\"admin\" password=\"pwd\" roles=\"manager-gui,manager-script\"/></tomcat-users>" >$CATALINA_BASE/conf/tomcat-users.xml
 #
 EXPOSE 8080
-ENTRYPOINT ["/usr/share/tomcat7/bin/startup.sh"]
-CMD []
+# Start Server
+# ENTRYPOINT CMD ["/usr/share/tomcat7/bin/catalina.sh" "run"]
+# CMD []
